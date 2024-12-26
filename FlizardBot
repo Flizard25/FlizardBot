@@ -1,0 +1,37 @@
+from bot_logic import gen_pass  # Импортируем функцию из bot_logic
+import telebot
+import random
+
+# Замени '7883883379:AAEKepKo4fS201IjLAU-c3vX05P3DjPbfT4' на токен твоего бота
+# Этот токен ты получаешь от BotFather, чтобы бот мог работать
+bot = telebot.TeleBot("7883883379:AAEKepKo4fS201IjLAU-c3vX05P3DjPbfT4")
+
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+    bot.reply_to(message, "Ты кто?")
+
+@bot.message_handler(commands=['hello'])
+def send_hello(message):
+    bot.reply_to(message, "Привет, чувак. Как дела?")
+
+@bot.message_handler(commands=['bye'])
+def send_bye(message):
+    bot.reply_to(message, "Ок, Пока  (но в любом случае вы можете мне написать в любое время)")      
+@bot.message_handler(commands=['pass'])
+def send_password(message):
+    password = gen_pass(10)  # Устанавливаем длину пароля, например, 10 символов
+    bot.reply_to(message, f"Вот твой сгенерированный пароль: {password}")
+
+
+@bot.message_handler(commands=['random_numbers'])
+def send_random_numbers(message):
+    bot.reply_to(message, "Введите любое число от 1 до 15")  
+    random.choice(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 )
+
+
+
+@bot.message_handler(func=lambda message: True)
+def echo_all(message):
+    bot.reply_to(message, message.text)
+
+bot.polling()
