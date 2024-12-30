@@ -2,7 +2,7 @@ from bot_logic import gen_pass  # Импортируем функцию из bot
 import telebot
 import random
 
-# Замени '7883883379:AAEKepKo4fS201IjLAU-c3vX05P3DjPbfT4' на токен твоего бота
+# Замени '' на токен твоего бота
 # Этот токен ты получаешь от BotFather, чтобы бот мог работать
 bot = telebot.TeleBot("7883883379:AAEKepKo4fS201IjLAU-c3vX05P3DjPbfT4")
 
